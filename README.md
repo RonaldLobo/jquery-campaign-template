@@ -301,11 +301,8 @@ $required = json_decode($requiredJson);
 
 When you are going to publish your site, please be sure to **Not Publish** the following items:
 
-- Folder node_modules this is only required by gulp during development
-- Folder Tests not needed for production
 - gulpfile.js only required by Gulp during development
-- Folder Docs not necessary for production
 
 Also please not forget to:
 
-- Change the JS file to app.min.js for production
+- Change the JS file to global.min.js for production
