@@ -33,6 +33,7 @@ $required = json_decode($requiredJson);
                 var orderSettings = <?php echo $settings; ?>;
                 var orderShowEl = <?php echo $requiredJson; ?>;
                 var downSell = indexSettings.Result.downSell;// redirect
+                var pageId = 1;
             </script>
             <script type="text/javascript" src="js/jquery.min.js"></script>
             <script type="text/javascript" src="js/jquery.cookie.js"></script>
@@ -42,5 +43,6 @@ $required = json_decode($requiredJson);
             <script type="text/javascript" src="js/billing/rsa.js"></script>
             <script type="text/javascript" src="js/exit.js"></script>
             <script type="text/javascript" src='js/global.js'></script>
+            <script type="text/javascript" src='js/scripts.js'></script>
 	</body>
 </html>

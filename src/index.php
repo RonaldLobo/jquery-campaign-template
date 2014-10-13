@@ -36,6 +36,7 @@ $required = json_decode($requiredJson);
             var indexSettings = <?php echo $settings; ?>;
             var indexShowEl = <?php echo $requiredJson; ?>;
             var downSell = indexSettings.Result.downSell;// redirect
+            var pageId = 1;
         </script>
         <script src="js/jquery.min.js"></script>
         <script src="js/jquery.cookie.js"></script>
@@ -43,6 +44,7 @@ $required = json_decode($requiredJson);
         <script src='js/jNotify.jquery.min.js'></script>
         <script src="js/exit.js"></script>
         <script src='js/global.js'></script>
+        <script type="text/javascript" src='js/scripts.js'></script>
         <!--[if lte IE 8]>
             <script type="text/javascript">
                 ie = true;
