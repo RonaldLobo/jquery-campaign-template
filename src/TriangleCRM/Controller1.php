@@ -44,30 +44,10 @@ class Controller {
             break;
             case 'createsubscription':
                 $vars['creditCard'] = $this->decryptCard($vars['creditCard']);
-                $vars['ip'] = $_SERVER['REMOTE_ADDR'];
                 $result = $this->api->CreateSubscription($vars);
             break;
-            case 'charge':
-                $vars['creditCard'] = $this->decryptCard($vars['creditCard']);
-                $vars['ip'] = $_SERVER['REMOTE_ADDR'];
-                $result = $this->api->Charge($vars);
-            break;
-            case 'fireaffiliatepixel':
+            case 'firepixel':
                 $result = $this->api->FireAffiliatePixel($vars);
-            break;
-            case 'iscreditcarddupe':
-                $vars['creditCard'] = $this->decryptCard($vars['creditCard']);
-                $result = $this->api->IsCreditCardDupe($vars);
-            break;
-            case 'iscreditcardused':
-                $vars['creditCard'] = $this->decryptCard($vars['creditCard']);
-                $result = $this->api->IsCreditCardUsed($vars);
-            break;
-            case 'cancelsubscription':
-                $result = $this->api->CancelSubscription($vars);
-            break;
-            case 'getsaleinfo':
-                $result = $this->api->GetSaleInfo($vars);
             break;
             case 'bootstrap':
                     $result = $this->api->GetModel($vars['name']);

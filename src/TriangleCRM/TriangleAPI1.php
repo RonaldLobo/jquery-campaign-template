@@ -1214,39 +1214,5 @@ class TriangleAPI extends \SoapClient {
         }
         return (0 == ($sum % 10));
     }
-    
-    public function GetSaleInfo($params) {
-        $result = NULL;
-        $params = array_merge($this->credInfo, (array) $params);
-        $isValid = $this->Validate($params);
-
-        if (empty($isValid)) {
-
-            $returnType = $this->GetResult(__FUNCTION__);
-            $obj = parent::__soapCall(__FUNCTION__, array((array) $params));
-            $result = $this->ParseResponse($obj->$returnType, true);
-        } else {
-
-            $result = (object) array('State' => 'Error', 'Info' => $isValid, 'Result' => $isValid);
-        }
-        return $result;
-    }
-    
-    public function CancelSubscription($params) {
-        $result = NULL;
-        $params = array_merge($this->credInfo, (array) $params);
-        $isValid = $this->Validate($params);
-
-        if (empty($isValid)) {
-
-            $returnType = $this->GetResult(__FUNCTION__);
-            $obj = parent::__soapCall(__FUNCTION__, array((array) $params));
-            $result = $this->ParseResponse($obj->$returnType, true);
-        } else {
-
-            $result = (object) array('State' => 'Error', 'Info' => $isValid, 'Result' => $isValid);
-        }
-        return $result;
-    }
 
 }

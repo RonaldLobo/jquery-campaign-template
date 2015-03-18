@@ -3,7 +3,7 @@ var globalFunctions = (function () {
         
 	obj.alert = function(msg){
             jError(
-                "<div>We are sorry but we could not process your request.<br/><h2>"+msg+"</h2>Please correct and try again.</div>",
+                "<div>We were unable to process your order.<br/><h2>"+msg+"</h2>Please correct and try again. Click here to make changes</div>",
                 {
                     autoHide : true, // added in v2.0
                     TimeShown : 3000,
@@ -22,7 +22,7 @@ var globalFunctions = (function () {
         };
         
         obj.setCookie = function(name,data){
-            $.cookie(name, JSON.stringify(data));
+            $.cookie(name, JSON.stringify(data),{expires: 1,path: '/'});
         };
         
         obj.removeCookie = function(name){
@@ -83,7 +83,90 @@ MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAM1RXGYKyXlCGcGvFYeNCD+yzVAOoK+w\
         
         obj.eventsHandler = function (){
             
-        }
+        };
+        
+        obj.createProspect = function(values,redirect){
+            jsonObj = JSON.stringify(values);
+            obj.ServiceHandlerPost('createprospect',jsonObj).done(function(response){
+                    console.log(response);
+                    response = JSON.parse(response);
+                    if(response.State == 'Success'){
+                        values.ProspectID = response.Result.ProspectID;
+                        console.log(values);
+                        gf.setCookie('billingInfo',values);
+                        internal = true;
+                        window.location.href = redirect;
+                    }
+                    else{
+                        secondPart = getSecondPart(response.Info);
+                        if(secondPart){
+                            gf.alert(getFirstPart(secondPart));
+                        }
+                        else{
+                            gf.alert(response.Info);
+                        }
+                    }
+            });
+        };
+        
+        obj.createSubscription = function(values,redirect){
+            jsonObj = JSON.stringify(values);
+            obj.ServiceHandlerPost('CreateSubscription',jsonObj).done(function(response){
+                response = JSON.parse(response);
+                if(response.State == 'Success'){
+                    internal = true;
+                    window.location.href = redirect;
+                }
+                else{
+                    if(response.Info == 'Test charge. ERROR'){ // testing env, remove on PROD
+                        internal = true;
+                        window.location.href = redirect;
+                    }
+                    else{
+                        secondPart = getSecondPart(response.Info);
+                        if(secondPart){
+                            gf.alert(getFirstPart(secondPart));
+                        }
+                        else{
+                            gf.alert(response.Info);
+                        }
+                    }
+                }
+            });
+        };
+        
+        obj.charge = function(values,redirect){
+            jsonObj = JSON.stringify(values);
+            obj.ServiceHandlerPost('Charge',jsonObj).done(function(response){
+                response = JSON.parse(response);
+                if(response.State == 'Success'){
+                    internal = true;
+                    window.location.href = redirect;
+                }
+                else{
+                    if(response.Info == 'Test charge. ERROR'){ // testing env, remove on PROD
+                        internal = true;
+                        window.location.href = redirect;
+                    }
+                    else{
+                        secondPart = getSecondPart(response.Info);
+                        if(secondPart){
+                            gf.alert(getFirstPart(secondPart));
+                        }
+                        else{
+                            gf.alert(response.Info);
+                        }
+                    }
+                }
+            });
+        };
+        
+        obj.getSecondPart = function(str) {
+            return str.split('<Message>')[1];
+        };
+        obj.getFirstPart = function(str) {
+            return str.split('</Message>')[0];
+        };
         
         function init(){
             obj.eventsHandler();

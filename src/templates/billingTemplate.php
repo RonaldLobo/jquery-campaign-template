@@ -1,61 +1,6 @@
-<?php
-    $states = array(
-        'AL'=>'Alabama',
-        'AK'=>'Alaska',
-        'AZ'=>'Arizona',
-        'AR'=>'Arkansas',
-        'CA'=>'California',
-        'CO'=>'Colorado',
-        'CT'=>'Connecticut',
-        'DE'=>'Delaware',
-        'DC'=>'District of Columbia',
-        'FL'=>'Florida',
-        'GA'=>'Georgia',
-        'HI'=>'Hawaii',
-        'ID'=>'Idaho',
-        'IL'=>'Illinois',
-        'IN'=>'Indiana',
-        'IA'=>'Iowa',
-        'KS'=>'Kansas',
-        'KY'=>'Kentucky',
-        'LA'=>'Louisiana',
-        'ME'=>'Maine',
-        'MD'=>'Maryland',
-        'MA'=>'Massachusetts',
-        'MI'=>'Michigan',
-        'MN'=>'Minnesota',
-        'MS'=>'Mississippi',
-        'MO'=>'Missouri',
-        'MT'=>'Montana',
-        'NE'=>'Nebraska',
-        'NV'=>'Nevada',
-        'NH'=>'New Hampshire',
-        'NJ'=>'New Jersey',
-        'NM'=>'New Mexico',
-        'NY'=>'New York',
-        'NC'=>'North Carolina',
-        'ND'=>'North Dakota',
-        'OH'=>'Ohio',
-        'OK'=>'Oklahoma',
-        'OR'=>'Oregon',
-        'PA'=>'Pennsylvania',
-        'RI'=>'Rhode Island',
-        'SC'=>'South Carolina',
-        'SD'=>'South Dakota',
-        'TN'=>'Tennessee',
-        'TX'=>'Texas',
-        'UT'=>'Utah',
-        'VT'=>'Vermont',
-        'VA'=>'Virginia',
-        'WA'=>'Washington',
-        'WV'=>'West Virginia',
-        'WI'=>'Wisconsin',
-        'WY'=>'Wyoming',
-    );
-?>
 <form Method="post" name='opt_in_form' id='opt_in_form' class='templateForm' onsubmit="return infoModule.save()">
         <div id="summary" class="red"></div>
-        <?php if($required->Result->firstName){ ?>
+        <div class="firstName">
             <div class="form-element form-input-full">
                 <label>First Name <span class="required">*</span></label> 
                 <input 
@@ -68,8 +13,8 @@
                     title="Please, enter valid Shipping first name" 
                     required
             /></div>
-        <?php } ?>
-        <?php if($required->Result->lastName){ ?>
+        </div>
+        <div class="lastName">
         <div class="form-element form-input-full">
                 <label>Last Name <span class="required">*</span></label> 
                 <input 
@@ -82,8 +27,8 @@
                     title="Please, enter valid Shipping last name" 
                     required
                     /></div>
-        <?php } ?>
-        <?php if($required->Result->address){ ?>
+        </div>
+        <div class="address">
         <div class="form-element form-input-full">
                 <label>Address <span class="required">*</span></label> 
                 <input 
@@ -96,8 +41,8 @@
                     title="Please, enter valid Shipping address" 
                     required
                     /></div>
-        <?php } ?>
-        <?php if($required->Result->address2){ ?>
+        </div>
+        <div class="address2">
         <div class="form-element form-input-full">
                 <label>Address <span class="required">*</span></label> 
                 <input 
@@ -110,9 +55,9 @@
                     title="Please, enter valid Shipping second address" 
                     required
                     /></div>
-        <?php } ?>
-        <?php if($required->Result->city){ ?>
-        <div class="form-element form-input-full">
+        </div>
+        <div class="city">
+            <div class="form-element form-input-full">
                 <label>City <span class="required">*</span></label> 
                 <input 
                     tabindex="4" 
@@ -124,9 +69,9 @@
                     title="Please, enter valid Shipping city" 
                     required
                     /></div>
-        <?php } ?>
-        <?php if($required->Result->state){ ?>
-        <div class="form-element form-input-full">
+        </div>
+        <div class="state">
+            <div class="form-element form-input-full">
                 <label>State <span class="required">*</span></label>
                 <select 
                     tabindex="5"  
@@ -145,10 +90,10 @@
                         echo "<option value='".$abbr."' ".$sel.">".$name." (".$abbr.")</option>";
                     }?>
                 </select>
+            </div>
         </div>
-        <?php } ?>
-        <?php if($required->Result->zip){ ?>
-        <div class="form-element form-input-full">
+        <div class="zip">
+            <div class="form-element form-input-full">
                 <label>Postal Code <span class="required">*</span></label> 
                 <input 
                     tabindex="6" 
@@ -162,9 +107,9 @@
                     required 
                     pattern="[0-9]+"
                     /></div>
-        <?php } ?>
-        <?php if($required->Result->country){ ?>
-        <div class="form-element form-input-full">
+        </div>
+        <div class="country">
+            <div class="form-element form-input-full">
                 <label>State <span class="required">*</span></label>
                 <select 
                     tabindex="5"  
@@ -426,11 +371,11 @@
                     <option value="YE">Yemen</option>
                     <option value="ZM">Zambia</option>
                     <option value="ZW">Zimbabwe</option>
-        </select>
+            </select>
+            </div>
         </div>
-        <?php } ?>
-        <?php if($required->Result->phone){ ?>
-        <div class="form-element form-input-full">
+        <div class="phone">
+            <div class="form-element form-input-full">
                 <label>Phone <span class="required">*</span></label> 
                 <input 
                     tabindex="7"
@@ -444,9 +389,9 @@
                     required
                     pattern="[0-9]+"
                     /></div>
-        <?php } ?>
-        <?php if($required->Result->email){ ?>
-        <div class="form-element form-input-full">
+        </div>
+        <div class="email">
+            <div class="form-element form-input-full">
                 <label>Email <span class="required">*</span></label> 
                 <input 
                     tabindex="8"
@@ -458,7 +403,7 @@
                     title="Please, enter valid Shipping e-mail"
                     required
                     /></div>
-        <?php } ?>
+        </div>
         <input tabindex="9" class="form-button" type='submit' id="button-submit" value="submit" readonly/>
         <div class="button-processing" id="button-processing" style="display:none;"><img src="img/loading.gif" /><br />Processing...</div>
 </form>
